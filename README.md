@@ -1,16 +1,20 @@
-= Junior
+Junior
+======
 
 An MVC Web Framework
 
-== Installation
+Installation
+------------
 
 sudo gem install junior
 
-== Example App
+Example App
+-----------
 
 http://github.com/eddanger/junior-app
 
-== Note on Patches/Pull Requests
+Note on Patches/Pull Requests
+-----------------------------
  
 * Fork the project.
 * Make your feature addition or bug fix.
@@ -20,6 +24,7 @@ http://github.com/eddanger/junior-app
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-== Copyright
+Copyright
+---------
 
 Copyright (c) 2010 Michael Wood. See LICENSE for details.
