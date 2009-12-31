@@ -6,6 +6,10 @@ An MVC Web Framework
 
 sudo gem install junior
 
+== Example App
+
+http://github.com/eddanger/junior-app
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
