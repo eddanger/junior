@@ -1,9 +1,9 @@
 module Junior
-  VERSION = '0.0.0'
+  VERSION = '0.0.1'
 
   require 'rack'
   require 'rack/builder'
-  require 'rack/mount'
+  require 'usher'
   require 'tilt'
 
   require 'junior/helpers'

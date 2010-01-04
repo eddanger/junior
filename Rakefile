@@ -11,8 +11,8 @@ begin
     gem.homepage = 'http://github.com/eddanger/junior'
     gem.authors = ["Michael Wood"]
 
-    gem.add_dependency 'rack',       "~> 1.0.1"
-    gem.add_dependency 'rack-mount', "~> 0.4.0"
+    gem.add_dependency 'rack',       "~> 1.1.0"
+    gem.add_dependency 'usher',      "~> 0.6.1"
     gem.add_dependency 'tilt',       "~> 0.4.0"
 
     gem.add_development_dependency 'rspec', '~> 1.2.9'

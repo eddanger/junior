@@ -14,16 +14,20 @@ module Junior
         
           #puts app.env['rack.input'].read
           
-          controller = app.env[ 'rack.routing_args' ][ :controller ].to_s
-          action     = app.env[ 'rack.routing_args' ][ :action ].to_s
-          id         = app.env[ 'rack.routing_args' ][ :id ].to_s
+          # controller = app.env[ 'rack.routing_args' ][ :controller ].to_s
+          # action     = app.env[ 'rack.routing_args' ][ :action ].to_s
+          # id         = app.env[ 'rack.routing_args' ][ :id ].to_s
+
+          controller = app.env[ 'usher.params' ][ :controller ].to_s
+          action     = app.env[ 'usher.params' ][ :action ].to_s
+          id         = app.env[ 'usher.params' ][ :id ].to_s
         
           controller_instance = controller.camelize.to_class.new(app, id)
 
           if controller_instance.respond_to?(action)
             controller_instance.send(action)
           else
-            not_found('Not found')
+            controller_instance.not_found('Not found')
           end
         end
       end

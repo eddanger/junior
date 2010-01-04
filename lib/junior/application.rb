@@ -14,8 +14,7 @@ module Junior
     
     def call!(env)
       @env        = env
-      #@request    = Rack::Request.new(env)
-      @request    = Junior::Request.new(env)
+      @request    = Rack::Request.new(env)
       @response   = Rack::Response.new
       
       Dispatcher.dispatch!(self)
@@ -42,7 +41,7 @@ module Junior
         @prototype ||= new
       end
 
-      def new(*args, &bk)
+      def new(*args, &block)
         builder = Rack::Builder.new
 
         middleware.each { |middleware, args, block| builder.use(middleware, *args, &block) }
