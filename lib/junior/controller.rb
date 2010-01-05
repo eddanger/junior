@@ -15,14 +15,17 @@ module Junior
       @resource_id = id
     end
 
-    def render(path)
+    def render(path, *args)
+      
+      layout_path = ( args.first && ( args.first[ :layout_path ] || args.first[ :layout_path ].nil? ) ) ? args.first[ :layout_path ] : self.class.layout_path
+      
       begin
         template = Tilt.new(path)
         
         output = template.render(self)
         
-        if self.class.layout_path
-          layout_template = Tilt.new(self.class.layout_path)
+        if layout_path
+          layout_template = Tilt.new(layout_path)
           output = layout_template.render(self) { output }
         end
         
@@ -33,6 +36,10 @@ module Junior
       end
       
       output
+    end
+
+    def partial(path, *args)
+      render path, :layout_path => nil
     end
 
     class << self

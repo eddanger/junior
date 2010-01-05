@@ -17,6 +17,8 @@ module Junior
       @request    = Rack::Request.new(env)
       @response   = Rack::Response.new
       
+      #puts env.inspect
+      
       Dispatcher.dispatch!(self)
       
       status, header, body = @response.finish
@@ -28,15 +30,9 @@ module Junior
 
       def reset!
         @middleware = []
-        @resources = []
-        @routes = []
         @prototype  = nil
       end
       
-      def router
-        Router.router(self)
-      end
-
       def prototype
         @prototype ||= new
       end
@@ -66,24 +62,8 @@ module Junior
         end
       end
     
-      def resources
-        @resources || []
-      end
-    
-      def routes
-        @routes || []
-      end
-    
       def use(middleware, *args, &block)
         @middleware << [ middleware, args, block ]
-      end
-
-      def resource(resource)
-        @resources << resource
-      end
-
-      def route(path, to = {}, method = 'GET')
-        @routes << { :path => path, :to => to, :method => method }
       end
 
       def set(option, value=self)

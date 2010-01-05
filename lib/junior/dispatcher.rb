@@ -14,12 +14,14 @@ module Junior
         
           #puts app.env['rack.input'].read
           
-          # controller = app.env[ 'rack.routing_args' ][ :controller ].to_s
-          # action     = app.env[ 'rack.routing_args' ][ :action ].to_s
-          # id         = app.env[ 'rack.routing_args' ][ :id ].to_s
-
-          controller = app.env[ 'usher.params' ][ :controller ].to_s
-          action     = app.env[ 'usher.params' ][ :action ].to_s
+          controller = app.env[ 'usher.response' ].last.destination[ :controller ].to_s
+          
+          if controller[ '/' ] # a nested route
+            controller = controller[(controller.rindex( '/' ) + 1)..controller.length]
+            puts controller
+          end
+          
+          action     = app.env[ 'usher.response' ].last.destination[ :action ].to_s
           id         = app.env[ 'usher.params' ][ :id ].to_s
         
           controller_instance = controller.camelize.to_class.new(app, id)
