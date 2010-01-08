@@ -65,7 +65,7 @@ module Junior
     # Set the Content-Type of the response body given a media type or file
     # extension.
     def content_type(type, params={})
-      mime_type = self.mime_type(type)
+      mime_type = self.mime_type( ".#{type}" )
       fail "Unknown media type: %p" % type if mime_type.nil?
       if params.any?
         params = params.collect { |kv| "%s=%s" % kv }.join(', ')
