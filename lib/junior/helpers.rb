@@ -84,6 +84,21 @@ module Junior
         response['Content-Disposition'] << params
       end
     end
+    
+    # Set the last modified time of the resource (HTTP 'Last-Modified' header)
+    # and halt if conditional GET matches. The +time+ argument is a Time,
+    # DateTime, or other object that responds to +to_time+.
+    #
+    # When the current request includes an 'If-Modified-Since' header that
+    # matches the time specified, execution is immediately halted with a
+    # '304 Not Modified' response.
+    def last_modified(time)
+      time = time.to_time if time.respond_to?(:to_time)
+      time = time.httpdate if time.respond_to?(:httpdate)
+      response['Last-Modified'] = time
+      halt 304 if time == request.env['HTTP_IF_MODIFIED_SINCE']
+      time
+    end
 
     # Use the contents of the file at +path+ as the response body.
     def send_file(path, opts={})
@@ -106,6 +121,18 @@ module Junior
       halt StaticFile.open(path, 'rb')
     rescue Errno::ENOENT
       not_found
+    end
+  end
+end
+
+# Rack response body used to deliver static files. The file contents are
+# generated iteratively in 8K chunks.
+class StaticFile < ::File #:nodoc:
+  alias_method :to_path, :path
+  def each
+    rewind
+    while buf = read(8192)
+      yield buf
     end
   end
 end
