@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{junior}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Wood"]
-  s.date = %q{2010-01-05}
+  s.date = %q{2010-01-09}
   s.description = %q{A Mini MVC Web Framework for Ruby built on Rack and a lot of inspiration from Sinatra}
   s.email = %q{mike@michaelwood.com}
   s.extra_rdoc_files = [
@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".gitignore",
+     "HISTORY",
      "LICENSE",
      "README.md",
      "Rakefile",
@@ -52,20 +53,20 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rack>, ["~> 1.1.0"])
-      s.add_runtime_dependency(%q<usher>, ["~> 0.6.2"])
+      s.add_runtime_dependency(%q<usher>, ["~> 0.6.3"])
       s.add_runtime_dependency(%q<tilt>, ["~> 0.4.0"])
       s.add_development_dependency(%q<rspec>, ["~> 1.2.9"])
       s.add_development_dependency(%q<yard>, ["~> 0.5.2"])
     else
       s.add_dependency(%q<rack>, ["~> 1.1.0"])
-      s.add_dependency(%q<usher>, ["~> 0.6.2"])
+      s.add_dependency(%q<usher>, ["~> 0.6.3"])
       s.add_dependency(%q<tilt>, ["~> 0.4.0"])
       s.add_dependency(%q<rspec>, ["~> 1.2.9"])
       s.add_dependency(%q<yard>, ["~> 0.5.2"])
     end
   else
     s.add_dependency(%q<rack>, ["~> 1.1.0"])
-    s.add_dependency(%q<usher>, ["~> 0.6.2"])
+    s.add_dependency(%q<usher>, ["~> 0.6.3"])
     s.add_dependency(%q<tilt>, ["~> 0.4.0"])
     s.add_dependency(%q<rspec>, ["~> 1.2.9"])
     s.add_dependency(%q<yard>, ["~> 0.5.2"])

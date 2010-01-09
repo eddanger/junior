@@ -12,7 +12,7 @@ begin
     gem.authors = ["Michael Wood"]
 
     gem.add_dependency 'rack',       "~> 1.1.0"
-    gem.add_dependency 'usher',      "~> 0.6.2"
+    gem.add_dependency 'usher',      "~> 0.6.3"
     gem.add_dependency 'tilt',       "~> 0.4.0"
 
     gem.add_development_dependency 'rspec', '~> 1.2.9'
